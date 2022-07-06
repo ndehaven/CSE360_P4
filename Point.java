@@ -1,3 +1,4 @@
+import java.awt.*;
 public class Point{
   private int x;
   private int y;
@@ -20,7 +21,7 @@ public class Point{
   public void setColor(Color color) {this.color = color;}
   
   @Override
-  public boolean equals(object o) {
+  public boolean equals(Object o) {
     Point other = (Point) o;
     return this.x == other.x && this.y == other.y;
   }
