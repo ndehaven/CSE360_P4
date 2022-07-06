@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Observable;
+
 public class Blackboard extends Observable {
   private ArrayList<Point> points;
   private ArrayList<Line> lines;
