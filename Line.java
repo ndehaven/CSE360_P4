@@ -10,7 +10,7 @@ public class Line {
 		
 	}
 	
-	public Point getEndPoin1() { 
+	public Point getEndPoint1() { 
 		return this.endPoint1;
 	}
 	
