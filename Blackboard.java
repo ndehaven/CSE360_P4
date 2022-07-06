@@ -22,7 +22,7 @@ public class Blackboard extends Observable {
   public ArrayList<Line> getLines(){return lines;}
   
   public void addPoint(Point p) {
-    points.add(P);
+    points.add(p);
     setChanged();
     notifyObservers();
   }
