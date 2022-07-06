@@ -1,0 +1,8 @@
+
+public class HandlerLine implements Observer
+{
+	@Override
+	public void update(Observable o, Object args) {...}
+	
+	private float distance(Point a, Point b) {...}
+}
