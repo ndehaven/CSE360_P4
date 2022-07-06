@@ -1,1 +1,2 @@
-# CSE360_P4
+# Project 04 
+# Creates a cluster/line of user-selected points on command 
