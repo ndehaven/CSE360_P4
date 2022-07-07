@@ -2,9 +2,6 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
-
-import HW3.GUI;
-
 import java.awt.event.*;
 
 
