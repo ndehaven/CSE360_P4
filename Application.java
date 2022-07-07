@@ -84,6 +84,21 @@ public class Application extends JFrame implements ActionListener, MenuListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
+		if (e.getSource().equals(New)) { 
+			BlackBoard.getInstance().empty();
+			WorkAreaPanel newArea = new WorkAreaPanel();
+			workAreaPanel = newArea;
+			repaint(); 
+
+		}
+		
+		else if (e.getSource().equals(Load)) { 
+			// Load existing coordinates 
+		}
+		
+		else if (e.getSource().equals(Save)) { 
+			//Save current coordinates of dot on the screen 
+		}
 
 		
 	}
