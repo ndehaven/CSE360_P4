@@ -33,10 +33,10 @@ public class WorkAreaPanel extends JPanel implements MouseListener {
     super.paintComponent(g);
     
     //points
-    List<Point> points = Blackboard.getInstance().getPoints();
+    ArrayList<Point> points = Blackboard.getInstance().getPoints();
     if (points == null) return;
     g.setColor(Color.BLACK);
-    for (point p : points) {
+    for (Point p : points) {
       if(Color.BLUE.equals(p.getColor())) {
         g.setColor(Color.BLUE);
       } else if (Color.RED.equals(p.getColor())) {
@@ -48,7 +48,7 @@ public class WorkAreaPanel extends JPanel implements MouseListener {
     }
     
     //lines
-    List<Line> lines = Blackboard.getInstance().getLines();
+    ArrayList<Line> lines = Blackboard.getInstance().getLines();
     if (Lines == null) return;
     for (Line l : lines) {
       Point x1 = l.getEndPoint1();
