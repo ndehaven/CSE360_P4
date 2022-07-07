@@ -2,6 +2,9 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
+
+import HW3.GUI;
+
 import java.awt.event.*;
 
 
@@ -77,17 +80,23 @@ public class Application extends JFrame implements ActionListener, MenuListener{
 		
 		
 	}
+	
+	
+
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		
+
 		
 	}
 
 	@Override
 	public void menuSelected(MenuEvent e) {
-		// TODO Auto-generated method stub
-		
+		String userNames = "Team members: \nNoah\n Ash\n Omar";
+ 		JOptionPane.showMessageDialog(null, userNames, "About" ,JOptionPane.PLAIN_MESSAGE);
+ 	
+ 		
 	}
 
 	@Override
@@ -104,3 +113,4 @@ public class Application extends JFrame implements ActionListener, MenuListener{
 	
 	
 }
+
