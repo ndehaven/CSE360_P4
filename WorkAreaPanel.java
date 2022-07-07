@@ -1,8 +1,25 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.ArrayList;
+
 public class WorkAreaPanel extends JPanel implements MouseListener {
   public WorkAreaPanel() {
     setBackground(Color.GRAY);
     addMouseListener(this);
   }
+  
+  @Override
+  public void mouseClicked(MouseEvent e) {}
+  
+  @Override
+  public void mousePressed(MouseEvent e) {}
+  
+  @Override
+  public void mouseEntered(MouseEvent e) {}
+  
+  @Override
+  public void mouseExited(MouseEvent e) {}
   
   @Override
   public void mouseReleased(MouseEvent e) {
