@@ -39,6 +39,13 @@ public class BlackBoard extends Observable{
 		
 	}
 	
+	public void empty(){
+		points.clear();
+		lines.clear();
+		setChanged();
+		notifyObservers();
+	}
+	
 	public void setLines(ArrayList<Line> lines) {
 		this.lines = lines;
 	}
