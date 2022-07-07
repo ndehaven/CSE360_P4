@@ -2,7 +2,9 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
+
 import java.awt.event.*;
+import java.util.ArrayList;
 
 
 public class Application extends JFrame implements ActionListener, MenuListener{
@@ -18,8 +20,6 @@ public class Application extends JFrame implements ActionListener, MenuListener{
 	JMenuItem New, Load, Save, Line, Cluster, LineCluster, About;
 	
 	
-	
-	@SuppressWarnings("deprecation")
 	public static void main(String[]args) { 
 		Application app = new Application(); 
 		app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -77,27 +77,27 @@ public class Application extends JFrame implements ActionListener, MenuListener{
 		
 		
 	}
-	
-	
-
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
 		if (e.getSource().equals(New)) { 
 			BlackBoard.getInstance().empty();
-			WorkAreaPanel newArea = new WorkAreaPanel();
-			workAreaPanel = newArea;
+			 WorkAreaPanel newArea = new WorkAreaPanel();
+			 workAreaPanel = newArea;
+			 repaint(); 
+		}
+		
+		else if (e.getSource().equals(Line)) { 
+			ArrayList<Line> lines = new ArrayList<Line>();
+			ArrayList<Point> points = BlackBoard.getInstance().getPoints();
+			for (int i = 1; i < points.size(); i++) {
+	            Point endPt1 = new Point(points.get(i-1).getX(), points.get(i-1).getY());
+	            Point endPt2 = new Point(points.get(i).getX(), points.get(i).getY());
+	            Line l = new Line(endPt1, endPt2);
+	            lines.add(l);
+			BlackBoard.getInstance().setLines(lines);
 			repaint(); 
-
-		}
-		
-		else if (e.getSource().equals(Load)) { 
-			// Load existing coordinates 
-		}
-		
-		else if (e.getSource().equals(Save)) { 
-			//Save current coordinates of dot on the screen 
+			}
 		}
 
 		
@@ -107,8 +107,8 @@ public class Application extends JFrame implements ActionListener, MenuListener{
 	public void menuSelected(MenuEvent e) {
 		String userNames = "Team members: \nNoah\n Ash\n Omar";
  		JOptionPane.showMessageDialog(null, userNames, "About" ,JOptionPane.PLAIN_MESSAGE);
- 	
  		
+ 		System.out.println(e.getSource());
 	}
 
 	@Override
