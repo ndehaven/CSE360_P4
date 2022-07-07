@@ -24,7 +24,7 @@ public class WorkAreaPanel extends JPanel implements MouseListener {
   @Override
   public void mouseReleased(MouseEvent e) {
     Point p = new Point(e.getX(), e.getY(), Color.BLACK);
-    Blackboard.getInstance().addPoint(p);
+    BlackBoard.getInstance().addPoint(p);
     repaint();
   }
   
@@ -33,7 +33,7 @@ public class WorkAreaPanel extends JPanel implements MouseListener {
     super.paintComponent(g);
     
     //points
-    ArrayList<Point> points = Blackboard.getInstance().getPoints();
+    ArrayList<Point> points = BlackBoard.getInstance().getPoints();
     if (points == null) return;
     g.setColor(Color.BLACK);
     for (Point p : points) {
@@ -48,8 +48,8 @@ public class WorkAreaPanel extends JPanel implements MouseListener {
     }
     
     //lines
-    ArrayList<Line> lines = Blackboard.getInstance().getLines();
-    if (Lines == null) return;
+    ArrayList<Line> lines = BlackBoard.getInstance().getLines();
+    if (lines == null) return;
     for (Line l : lines) {
       Point x1 = l.getEndPoint1();
       Point x2 = l.getEndPoint2();
