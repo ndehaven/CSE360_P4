@@ -5,6 +5,7 @@ import javax.swing.event.MenuListener;
 
 import java.awt.event.*;
 import java.util.ArrayList;
+import io.*
 
 
 public class Application extends JFrame implements ActionListener, MenuListener{
@@ -99,6 +100,27 @@ public class Application extends JFrame implements ActionListener, MenuListener{
 			repaint(); 
 			}
 		}
+		else if (e.getSource().equals(Save)) {
+		String filename = "Save.csv";
+		try{
+		File output = new File(filename);
+		
+		if (output.exists()) {
+                    JOptionPane.showMessageDialog(null, "File already exists!");
+                } else
+                    if(output.createNewFile()){
+		    FileWriter writer = new FileWriter(filename);
+                    writer.write(BlackBoard.getInstance().toString());
+                    writer.close();
+		    JOptionPane.showMessageDialog(null, "Successfully created file: " + filename);
+                }
+            } catch (IOException exception){
+                JOptionPane.showMessageDialog(null, "An error occurred." + exception.getMessage());
+                exception.printStackTrace();
+		}
+		//JOptionPane.showMessageDialog(null, BlackBoard.getInstance().toString());
+	    }
+	}
 
 		
 	}
