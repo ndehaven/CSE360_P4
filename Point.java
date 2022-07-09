@@ -1,4 +1,7 @@
 import java.awt.*;
+
+// This class controls the Points and allows the user to be able 
+// to set the location of the Point and the color attached to it 
 public class Point{
   private int x;
   private int y;
