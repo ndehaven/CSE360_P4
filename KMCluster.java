@@ -1,12 +1,9 @@
-import java.util.Random;
-
-import javax.swing.text.Position;
-
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+@SuppressWarnings("deprecation")
 public class KMCluster {
     ArrayList<Point> x;
     final int numberOfClass = 2;
@@ -64,13 +61,13 @@ public class KMCluster {
     }
 
     public void kmeans() {
-        iteration++;
-        if (iteration >= 2000) {
-            System.out.println("Maximum number of iterations reached");
-            System.out.println("We r stopping !!");
-            // returnClusterLabels();
-            return;
-        }
+//        iteration++;
+//        if (iteration >= 2000) {
+//            System.out.println("Maximum number of iterations reached");
+//            System.out.println("We r stopping !!");
+//            // returnClusterLabels();
+//            return;
+//        }
 
         // calculate the new means
         double total_x_1 = 0;
@@ -95,13 +92,13 @@ public class KMCluster {
         newMean2.setY((int) (total_y_2 / counter[1]));
 
 
-        if (prevMean1.getX() == newMean1.getX() && prevMean1.getY() == newMean1.getY()
-                && prevMean2.getX() == newMean2.getX() && prevMean2.getY() == newMean2.getY()) {
-            // System.out.println("EQUAL " + iteration);
-            System.out.println("We r stopping due to convergence !!");
-            // returnCluster();
-            return;
-        }
+//        if (prevMean1.getX() == newMean1.getX() && prevMean1.getY() == newMean1.getY()
+//                && prevMean2.getX() == newMean2.getX() && prevMean2.getY() == newMean2.getY()) {
+//            // System.out.println("EQUAL " + iteration);
+//            System.out.println("We r stopping due to convergence !!");
+//            // returnCluster();
+//            return;
+//        }
 
         // If means r not equal, update the cluster array and rinse and repeat
         initializeCounter();
@@ -122,7 +119,7 @@ public class KMCluster {
         prevMean1 = newMean1;
         prevMean2 = newMean2;
 
-        kmeans();
+//        kmeans();
     }
 
     private double calculateDistance(Point point, Point mean) {
@@ -155,10 +152,27 @@ public class KMCluster {
 
     }
 
-    public Point[] returnMean() {
-        Point[] mean = {newMean1, newMean2};
+//    public Point[] returnMean() {
+//        Point[] mean = {newMean1, newMean2};
+//        return mean;
+//    }
+    
+    public Point returnMean1() {
+        Point mean = newMean1;
         return mean;
     }
+    
+    public Point returnMean2() { 
+    	Point mean2 = newMean2; 
+    	return mean2; 
+    }
 
-
+    
+    
+    
+    
+    
+    
+    
+    
 }
