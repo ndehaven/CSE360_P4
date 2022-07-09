@@ -1,3 +1,10 @@
+/*
+Author: Aashritha Machiraju
+Class description: Class divides the dots into clusters
+*/
+
+
+
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Observable;
@@ -34,8 +41,6 @@ public class KMCluster {
         this.prevMean2.setX(x.get(x.size() - 1).getX());
         this.prevMean2.setY(x.get(x.size() - 1).getY());
 
-        // this.prevMean1 = new Point(5,6);
-        // this.prevMean2 = new Point(3,4);
         this.counter = new int[2]; // Counts the number of 0 for class 1 and 1 for class 2
         iteration = 0;
 
@@ -61,13 +66,6 @@ public class KMCluster {
     }
 
     public void kmeans() {
-//        iteration++;
-//        if (iteration >= 2000) {
-//            System.out.println("Maximum number of iterations reached");
-//            System.out.println("We r stopping !!");
-//            // returnClusterLabels();
-//            return;
-//        }
 
         // calculate the new means
         double total_x_1 = 0;
@@ -91,14 +89,6 @@ public class KMCluster {
         newMean2.setX((int) (total_x_2 / counter[1]));
         newMean2.setY((int) (total_y_2 / counter[1]));
 
-
-//        if (prevMean1.getX() == newMean1.getX() && prevMean1.getY() == newMean1.getY()
-//                && prevMean2.getX() == newMean2.getX() && prevMean2.getY() == newMean2.getY()) {
-//            // System.out.println("EQUAL " + iteration);
-//            System.out.println("We r stopping due to convergence !!");
-//            // returnCluster();
-//            return;
-//        }
 
         // If means r not equal, update the cluster array and rinse and repeat
         initializeCounter();
@@ -133,6 +123,7 @@ public class KMCluster {
         return cluster;
     }
 
+    //returns the radii of the circle that needs to be drawn 
     public double[] returnRadius() {
         double cluster_0_total = 0;
         double cluster_1_total = 0;
@@ -152,11 +143,6 @@ public class KMCluster {
 
     }
 
-//    public Point[] returnMean() {
-//        Point[] mean = {newMean1, newMean2};
-//        return mean;
-//    }
-    
     public Point returnMean1() {
         Point mean = newMean1;
         return mean;
