@@ -1,5 +1,7 @@
 /*
-Author: Aashritha Machiraju
+@author oolivas
+ * @author ndehaven
+ * @author amachira
 Class description: Class divides the dots into clusters
 */
 
