@@ -1,5 +1,7 @@
 import java.util.*;
 
+
+// This class is Obseravable and updates the Lines for the user to be able to see them 
 public class HandlerLine implements Observer {
 
 	@Override
