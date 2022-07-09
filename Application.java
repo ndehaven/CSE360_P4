@@ -6,6 +6,7 @@ import javax.swing.event.MenuListener;
 import java.awt.event.*;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class Application extends JFrame implements ActionListener, MenuListener{
@@ -126,31 +127,19 @@ public class Application extends JFrame implements ActionListener, MenuListener{
 	        	Circle c = new Circle(centerTest, 200); 
 	        	circles.add(c);
 	        	BlackBoard.getInstance().setCircles(circles);
-	        	repaint(); 
-	        	
-	        }
+	        	repaint();
 		}
+	}
 		
 		else if (e.getSource().equals(Save)) {
 			String filename = "Save.csv";
-			try{
-			File output = new File(filename);
-			
-			if (output.exists()) {
-	                    JOptionPane.showMessageDialog(null, "File already exists!");
-	                } else
-	                    if(output.createNewFile()){
-			    FileWriter writer = new FileWriter(filename);
-	                    writer.write(BlackBoard.getInstance().toString());
-	                    writer.close();
-			    JOptionPane.showMessageDialog(null, "Successfully created file: " + filename);
-	                }
-	            } catch (IOException exception){
-	                JOptionPane.showMessageDialog(null, "An error occurred." + exception.getMessage());
-	                exception.printStackTrace();
-			}
-			//JOptionPane.showMessageDialog(null, BlackBoard.getInstance().toString());
-		    }
+			Save(filename);
+		}
+		
+		else if (e.getSource().equals(Load)){
+            		String filename = "Save.csv";
+            		Load(filename);
+        	}
 	}
 
 	@Override
@@ -172,5 +161,42 @@ public class Application extends JFrame implements ActionListener, MenuListener{
 		
 	}
 	
+	private void Save(String filename){
+        try{
+            File output = new File(filename);
+            if (output.exists()) {
+                JOptionPane.showMessageDialog(null, "File already exists!");
+            } else
+            if(output.createNewFile()){
+                FileWriter writer = new FileWriter(filename);
+                writer.write(BlackBoard.getInstance().toString());
+                writer.close();
+                JOptionPane.showMessageDialog(null, "Successfully created file: " + filename);
+            }
+        } catch (IOException exception){
+            JOptionPane.showMessageDialog(null, "An error occurred." + exception.getMessage());
+            exception.printStackTrace();
+        }
+    }
 	
+	private void Load(String filename){
+        Point temp;
+        int x, y;
+        try {
+            File file = new File(filename);
+            Scanner scanner = new Scanner(file);
+            BlackBoard.getInstance().empty();
+            while (scanner.hasNextLine()){
+                String[] data = scanner.nextLine().split("[,]",0);
+                x = Integer.parseInt(data[0]);
+                y = Integer.parseInt(data[1]);
+                temp = new Point(x,y);
+                BlackBoard.getInstance().addPoint(temp);
+            }
+            scanner.close();
+            repaint();
+        } catch (FileNotFoundException exception){
+            JOptionPane.showMessageDialog(null, "An error occurred. " + exception.getMessage());
+        }
+    }
 }
