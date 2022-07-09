@@ -1,7 +1,15 @@
 import java.util.ArrayList;
 import java.util.Observable;
 
-
+/**
+ * This class operates as a bridge between our workAreaPanel and the Application itself allowing the blackboard
+ * to hold the data points for lines, circles and points  
+ * 
+ * @author oolivas
+ * @author ndehaven
+ * @author amachira
+ * @version 2022.07.08
+ */
 @SuppressWarnings("deprecation")
 public class BlackBoard extends Observable{
 
