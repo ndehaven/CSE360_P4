@@ -2,12 +2,19 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
-
 import java.awt.event.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * This class operates the GUI and creates the Frame/Panel that will control our program 
+ * 
+ * @author oolivas
+ * @author ndehaven
+ * @author amachira
+ * @version 2022.07.08
+ */
 
 public class Application extends JFrame implements ActionListener, MenuListener{
 
@@ -33,6 +40,7 @@ public class Application extends JFrame implements ActionListener, MenuListener{
 		BlackBoard.getInstance().addObserver(new HandlerCluster());
 	}
 	
+	// Application constructor that will handle the JMenu and the options the user selects 
 	public Application() { 
 		
 		super("Project 360"); 
@@ -86,16 +94,19 @@ public class Application extends JFrame implements ActionListener, MenuListener{
 	ArrayList<Circle> circles = new ArrayList<Circle>();
 	ArrayList<Point> points = BlackBoard.getInstance().getPoints();
 
-
+	// ActionPerform reacts whenever the user hits one of the Menu Options 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
+		
+		// When the user clicks New the screen will refresh with a new workArea 
 		if (e.getSource().equals(New)) { 
 			BlackBoard.getInstance().empty();
 			 WorkAreaPanel newArea = new WorkAreaPanel();
 			 workAreaPanel = newArea;
 			 repaint(); 
 		}
-		
+		// When the user clicks Line 
 		else if (e.getSource().equals(Line)) { 
 			
 
@@ -109,7 +120,7 @@ public class Application extends JFrame implements ActionListener, MenuListener{
 			}
 		}
 		
-		
+		// When the user clicks Cluster 
 		else if (e.getSource().equals(Cluster)) { 
 			Object[] options = {0, 2};
 	        Object miniMenu = (Integer)JOptionPane.showInputDialog(null, "Enter the amount of clusters you'd like:", 
@@ -127,19 +138,21 @@ public class Application extends JFrame implements ActionListener, MenuListener{
 	        	Circle c = new Circle(centerTest, 200); 
 	        	circles.add(c);
 	        	BlackBoard.getInstance().setCircles(circles);
-	        	repaint();
+	        	repaint(); 
+	        	
+	        }
 		}
-	}
-		
+		// When the user clicks Save
 		else if (e.getSource().equals(Save)) {
 			String filename = "Save.csv";
 			Save(filename);
 		}
-		
+		// When the user clicks Load 
 		else if (e.getSource().equals(Load)){
             		String filename = "Save.csv";
             		Load(filename);
         	}
+		
 	}
 
 	@Override
@@ -161,6 +174,7 @@ public class Application extends JFrame implements ActionListener, MenuListener{
 		
 	}
 	
+	// Save Method
 	private void Save(String filename){
         try{
             File output = new File(filename);
@@ -178,7 +192,7 @@ public class Application extends JFrame implements ActionListener, MenuListener{
             exception.printStackTrace();
         }
     }
-	
+	// Load Method 
 	private void Load(String filename){
         Point temp;
         int x, y;
@@ -199,4 +213,6 @@ public class Application extends JFrame implements ActionListener, MenuListener{
             JOptionPane.showMessageDialog(null, "An error occurred. " + exception.getMessage());
         }
     }
+	
+	
 }
