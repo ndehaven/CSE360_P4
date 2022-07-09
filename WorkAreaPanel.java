@@ -1,45 +1,51 @@
-import javax.swing.*;
+import java.util.List;
 import java.awt.*;
-import java.awt.event.*;
-import java.util.ArrayList;
+import javax.swing.*;
+import java.io.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
+@SuppressWarnings("unused")
 public class WorkAreaPanel extends JPanel implements MouseListener {
-  public WorkAreaPanel() {
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	
+public WorkAreaPanel() {
+	  
     setBackground(Color.GRAY);
     addMouseListener(this);
   }
   
-  @Override
-  public void mouseClicked(MouseEvent e) {}
-  
-  @Override
-  public void mousePressed(MouseEvent e) {}
-  
-  @Override
-  public void mouseEntered(MouseEvent e) {}
-  
-  @Override
-  public void mouseExited(MouseEvent e) {}
-  
-  @Override
-  public void mouseReleased(MouseEvent e) {
-    Point p = new Point(e.getX(), e.getY(), Color.BLACK);
+
+	public void mouseReleased(MouseEvent e) {
+	Point p = new Point(e.getX(), e.getY(), Color.DARK_GRAY); 
     BlackBoard.getInstance().addPoint(p);
+    System.out.println(e.getX() + "," + e.getY()); 
     repaint();
   }
   
+
+	
+	
   @Override
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
     
     //points
-    ArrayList<Point> points = BlackBoard.getInstance().getPoints();
-    if (points == null) return;
+    List<Point> points = BlackBoard.getInstance().getPoints();
+    if (points == null) {
+    	return;
+    }
     g.setColor(Color.BLACK);
+    
     for (Point p : points) {
       if(Color.BLUE.equals(p.getColor())) {
         g.setColor(Color.BLUE);
-      } else if (Color.RED.equals(p.getColor())) {
+      } 
+      else if (Color.RED.equals(p.getColor())) {
         g.setColor(Color.RED);
       } else {
         g.setColor(Color.BLACK);
@@ -48,13 +54,54 @@ public class WorkAreaPanel extends JPanel implements MouseListener {
     }
     
     //lines
-    ArrayList<Line> lines = BlackBoard.getInstance().getLines();
-    if (lines == null) return;
+    List<Line> lines = BlackBoard.getInstance().getLines();
+    if (lines == null) 
+    	return;
     for (Line l : lines) {
       Point x1 = l.getEndPoint1();
       Point x2 = l.getEndPoint2();
       g.setColor(Color.ORANGE);
       g.drawLine(x1.getX(), x1.getY(), x2.getX(), x2.getY());
     }
+    
+    
+    
+    
+    
+    List<Circle> circles = BlackBoard.getInstance().getCircles();
+    if (circles == null) 
+    	return; 
+    for (Circle c : circles) { 
+    	
+    	Point cc1 = c.getCenter();
+    	g.setColor(Color.GREEN); 
+    	g.drawOval(cc1.getX(), cc1.getY(), 400, 400);
+    	}
+    
   }
+
+@Override
+public void mouseClicked(MouseEvent e) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void mousePressed(MouseEvent e) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void mouseEntered(MouseEvent e) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void mouseExited(MouseEvent e) {
+	// TODO Auto-generated method stub
+	
+}
+
 }
