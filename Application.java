@@ -82,6 +82,7 @@ public class Application extends JFrame implements ActionListener, MenuListener{
 	}
 	
 	ArrayList<Line> lines = new ArrayList<Line>();
+	ArrayList<Circle> circles = new ArrayList<Circle>();
 	ArrayList<Point> points = BlackBoard.getInstance().getPoints();
 
 
@@ -95,6 +96,8 @@ public class Application extends JFrame implements ActionListener, MenuListener{
 		}
 		
 		else if (e.getSource().equals(Line)) { 
+			
+
 			for (int i = 1; i < points.size(); i++) {
 				Point endPt1 = new Point(points.get(i-1).getX(), points.get(i-1).getY());
 				Point endPt2 = new Point(points.get(i).getX(), points.get(i).getY());
@@ -107,7 +110,7 @@ public class Application extends JFrame implements ActionListener, MenuListener{
 		
 		
 		else if (e.getSource().equals(Cluster)) { 
-			Object[] options = {1, 2, 3, 4, 5};
+			Object[] options = {0, 2};
 	        Object miniMenu = (Integer)JOptionPane.showInputDialog(null, "Enter the amount of clusters you'd like:", 
 	                "Cluster Selector", JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 	        System.out.println(miniMenu);
@@ -116,18 +119,16 @@ public class Application extends JFrame implements ActionListener, MenuListener{
 	        	// File code for 1 cluster only
 	        }
 	        else if (miniMenu.equals(options[1]) ) { 
-	        	// Fill code for 2 clusters
+	        	
+	        	System.out.println("Cluster reached");
+	        	KMCluster cluster = new KMCluster(points, 2);
+	        	Point centerTest = cluster.returnMean1();
+	        	Circle c = new Circle(centerTest, 200); 
+	        	circles.add(c);
+	        	BlackBoard.getInstance().setCircles(circles);
+	        	repaint(); 
+	        	
 	        }
-	        else if (miniMenu.equals(options[2]) ) { 
-	        	// Fill code for 3 clusters 
-			}
-	        
-	        else if (miniMenu.equals(options[3]) ) { 
-	        	// Fill code for 4 clusters 
-			}
-	        else if (miniMenu.equals(options[4]) ) { 
-	        	// Fill code for 5 clusters 
-			}
 		}
 		
 		else if (e.getSource().equals(Save)) {
