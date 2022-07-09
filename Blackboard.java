@@ -1,19 +1,19 @@
 import java.util.ArrayList;
 import java.util.Observable;
 
-public class Blackboard extends Observable {
+public class BlackBoard extends Observable {
     private ArrayList<Point> points;
     private ArrayList<Line> lines;
     private ArrayList<Circle> circles;
     private static Blackboard instance;
 
-    public static Blackboard getInstance() {
+    public static BlackBoard getInstance() {
         if (instance == null)
             instance = new Blackboard();
         return instance;
     }
 
-    private Blackboard() {
+    private BlackBoard() {
         points = new ArrayList<Point>();
         lines = new ArrayList<Line>();
     }
