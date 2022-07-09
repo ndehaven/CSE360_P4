@@ -98,7 +98,38 @@ public class Application extends JFrame implements ActionListener, MenuListener{
 	            lines.add(l);
 			BlackBoard.getInstance().setLines(lines);
 			repaint(); 
-			}
+		}
+		
+		
+		else if (e.getSource().equals(Cluster)) { 
+			Object[] options = {1, 2, 3, 4, 5};
+	        Object miniMenu = (Integer)JOptionPane.showInputDialog(null, "Enter the amount of clusters you'd like:", 
+	                "Cluster Selector", JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+	        System.out.println(miniMenu);
+	        if (miniMenu.equals(options[0]) ) { 
+	        // File code for 1 cluster only
+	        }
+	        	else if (miniMenu.equals(options[1]) ) { 
+	        	// Fill code for 2 clusters
+	        	}
+	        		else if (miniMenu.equals(options[2]) ) { 
+	        		// Fill code for 3 clusters 
+				}
+	        
+	        			else if (miniMenu.equals(options[3]) ) { 
+	        			// Fill code for 4 clusters 
+						}
+	        				else if (miniMenu.equals(options[4]) ) { 
+	        				// Fill code for 5 clusters 
+						}
+		}	
+			
+			
+			
+			
+			
+			
+			
 		}
 		else if (e.getSource().equals(Save)) {
 		String filename = "Save.csv";
