@@ -1,6 +1,11 @@
+
+
+// This class controls the Circle and allows the user set a radius and mean for the circle to be drawn 
 public class Circle {
-    
-    public Point center;
+	
+	
+	
+	public Point center;
     public int radius;
 
     public Circle(Point center, int radius) {
@@ -15,4 +20,5 @@ public class Circle {
     public int getRadius() {
         return radius;
     }
+
 }
