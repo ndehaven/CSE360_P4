@@ -16,6 +16,16 @@ public class Point{
   
   public int getY() {return y;}
   
+  public void setX(int xnew)
+  {
+	  this.x = xnew;
+  }
+  
+  public void setY(int ynew)
+  {
+	  this.y = ynew;
+  }
+  
   public Color getColor() {return color;}
   
   public void setColor(Color color) {this.color = color;}
