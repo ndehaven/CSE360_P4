@@ -5,6 +5,17 @@ import java.io.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+
+/**
+ * This class controls the Panel in which the user will be able to create dots based on the 
+ * 
+ * @author oolivas
+ * @author ndehaven
+ * @author amachira
+ * @version 2022.07.08
+ */
+
+
 @SuppressWarnings("unused")
 public class WorkAreaPanel extends JPanel implements MouseListener {
   /**
@@ -29,7 +40,7 @@ public WorkAreaPanel() {
   
 
 	
-	
+	// Our paintComponent is responsible for drawing our circles, lines and dots on the screen 
   @Override
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
@@ -64,20 +75,17 @@ public WorkAreaPanel() {
       g.drawLine(x1.getX(), x1.getY(), x2.getX(), x2.getY());
     }
     
-    
-    
-    
-    
-    List<Circle> circles = BlackBoard.getInstance().getCircles();
-    if (circles == null) 
-    	return; 
-    for (Circle c : circles) { 
-    	
-    	Point cc1 = c.getCenter();
-    	g.setColor(Color.GREEN); 
-    	g.drawOval(cc1.getX(), cc1.getY(), 400, 400);
-    	}
-    
+
+//    List<Circle> circles = BlackBoard.getInstance().getCircles();
+//    if (circles == null) 
+//    	return; 
+//    for (Circle c : circles) { 
+//    	
+//    	Point cc1 = c.getCenter();
+//    	g.setColor(Color.GREEN); 
+//    	g.drawOval(cc1.getX(), cc1.getY(), 400, 400);
+//    	}
+//    
   }
 
 @Override
