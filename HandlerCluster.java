@@ -9,7 +9,7 @@ public class HandlerCluster implements Observer {
 	
 	@Override
 	public void update(Observable o, Object arg) {
-		Blackboard bb = (Blackboard) o;
+		BlackBoard bb = (BlackBoard) o;
 		ArrayList<Point>  array_points = bb.getPoints();
 		KMCluster cluster = new KMCluster(array_points, 2);
     	double cluster_index[] = cluster.returnClusterLabels();
