@@ -31,10 +31,28 @@ public class Blackboard extends Observable {
         setChanged();
         notifyObservers();
     }
+    public void empty(){
+		points.clear();
+		lines.clear();
+		setChanged();
+		notifyObservers();
+	}
 
     public void setLines(ArrayList<Line> lines) {
         this.lines = lines;
     }
+    //Returns String containing the X and Y values for all points on the screen. Each line is a point
+	@Override
+	public String toString(){
+        String s = "";
+        String xCommaY;
+		for (Point pt : points){
+			xCommaY = String.valueOf(pt.getX()) + ", " + String.valueOf(pt.getY() + ",\n ");
+			s = s.concat(xCommaY);
+		}
+		return s;
+	}
+
 
     public void setCircles(ArrayList<Circle> circles) {
         this.circles = circles;
