@@ -3,6 +3,13 @@ import java.awt.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+/**
+ * This class is the JUnitTest that will test a few of our methods to 
+ * make sure they are operating correctly 
+ * 
+ * @author ndehaven
+ * @version 2022.07.08
+ */
 class Project4Test {
 	
 	Point pointCase = new Point(5, 10, Color.DARK_GRAY); 
